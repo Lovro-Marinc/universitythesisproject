@@ -2,7 +2,7 @@
 
 
 
-## Getting started
+## Buisness web application for importing data from a SQL server database, modifying it in a Blazor powered UI, and exporting it into Rich Text formated Microsoft Excel file 
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
 

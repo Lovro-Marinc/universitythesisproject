@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\EWWA.Services\EWWA.Services.csproj" />
-  </ItemGroup>
-
 </Project>

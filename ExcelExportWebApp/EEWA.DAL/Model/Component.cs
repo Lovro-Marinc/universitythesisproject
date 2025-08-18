@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 using static System.Collections.Specialized.BitVector32;
 
 namespace EEWA.DAL.Model;
-
+[Table("Component", Schema = "dbo")]
 public class Component
 {
     [Key]
     public int ComponentID { get; set; }
 
-    [ForeignKey("Section")]
+    [ForeignKey("SectionID")]
     public int? SectionID { get; set; }
 
     [StringLength(50)]
@@ -43,5 +43,5 @@ public class Component
     public int? SortOrder { get; set; }
 
 
-    public virtual Section? Section { get; set; }
+
 }

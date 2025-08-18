@@ -1,7 +1,6 @@
-﻿namespace EWWA.Services
-{
-    public class Class1
-    {
+﻿namespace EWWA.Services;
 
-    }
+public class Class1
+{
+
 }

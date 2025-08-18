@@ -1,11 +1,18 @@
 using EEWA.WEB.Components;
-
+using EEWA.DAL;
+using EEWA.DAL.Context;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
+builder.Services.AddDbContext<SandBoxContext>(options =>
+{
+    options.UseSqlServer();
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

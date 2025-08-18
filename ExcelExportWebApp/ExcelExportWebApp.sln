@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36408.4 d17.14
+VisualStudioVersion = 17.14.36408.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EEWA.DAL", "EEWA.DAL\EEWA.DAL.csproj", "{1A99BAA3-1469-4CC1-AF0B-16BABBE380D2}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWWA.DAL.Tests", "EWWA.DAL.Tests\EWWA.DAL.Tests.csproj", "{E90C05E8-2DFC-4729-ADD2-0F89CBF377E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EEWA.Services.Tests", "EEWA.Services.Tests\EEWA.Services.Tests.csproj", "{1BA9A2F2-7024-4F73-AEA4-8994AD4F883D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A29E99A4-032D-4536-88B3-54E712EAB00C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{E90C05E8-2DFC-4729-ADD2-0F89CBF377E0} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{1BA9A2F2-7024-4F73-AEA4-8994AD4F883D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {854CE4D6-7E72-4B6C-964E-8A9DF609254D}

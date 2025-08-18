@@ -12,6 +12,7 @@ public class SandBoxContext : DbContext
 {
     public DbSet<ProjectSection> Sections { get; set; }
     public DbSet<Component> Components { get; set; }
+
     public SandBoxContext(DbContextOptions<SandBoxContext> options) : base(options)
     {
 

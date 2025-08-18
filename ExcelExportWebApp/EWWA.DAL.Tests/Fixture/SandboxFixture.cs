@@ -1,22 +1,30 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using EEWA.DAL.Context;
+using EWWA.DAL;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace EWWA.DAL.Tests.Fixture;
 
 public class SandboxFixture : IDisposable
 {
     public string ConnectionString { get; } =
         "Server=localhost;Database=Sandbox;User id=sa;Password=yourStrong(!)Password;TrustServerCertificate=True";
-
+    public SandBoxContext sandBoxContext { get; private set; }
     public SqlConnection Connection { get; private set; }
 
     public SandboxFixture()
     {
         Connection = new SqlConnection(ConnectionString);
+        var options = new DbContextOptionsBuilder<SandBoxContext>()
+           .UseSqlServer("Server=localhost;Database=Sandbox;User id=sa;Password=yourStrong(!)Password;TrustServerCertificate=True;")
+           .Options;
+        sandBoxContext = new SandBoxContext(options);
+
+       
         Connection.Open();  // open once for all tests
     }
 

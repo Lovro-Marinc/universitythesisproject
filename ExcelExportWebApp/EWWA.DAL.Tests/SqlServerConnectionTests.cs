@@ -1,7 +1,9 @@
+using EEWA.DAL.Context;
+using EWWA.DAL.Tests.Fixture;
 using Microsoft.Data.SqlClient;
 using Moq;
+using System.Collections.ObjectModel;
 using System.Data;
-using EWWA.DAL.Tests.Fixture;
 namespace EWWA.DAL.Tests;
 [CollectionDefinition("Database collection")]
 public class DatabaseCollection : ICollectionFixture<SandboxFixture> { }
@@ -27,5 +29,18 @@ public class SqlServerConnectionTests
         using var cmd = new SqlCommand("SELECT 1", _fixture.Connection);
         var result = cmd.ExecuteScalar();
         Assert.Equal(1, (int)result);
+    }
+    [Fact]
+    public async Task TestContextConnectionAsync()
+    {
+        SandBoxContext sandBox = _fixture.sandBoxContext;
+        int sectionID = 2;
+        var test = sandBox;
+        var projectSections = sandBox.Sections
+                                   .Where(s => s.SectionID == sectionID)
+                                   .Select(s => s.SectionName)
+                                   .FirstOrDefault();
+
+        Assert.Equal("Priprava in razvod GM-25_-15", projectSections);
     }
 }

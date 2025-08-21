@@ -1,6 +1,7 @@
 using EEWA.DAL;
 using EEWA.DAL.Context;
 using EEWA.WEB.Components;
+using EEWA.WEB.Components.Layout;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-
 builder.Services.AddDbContext<SandBoxContext>(options =>
     options.UseSqlServer(connectionString));
 try
@@ -22,6 +22,8 @@ catch (Exception ex)
 {
     Console.WriteLine($" Connection failed: {ex.Message}");
 }
+
+builder.Services.AddSingleton<TelerikNavMenuModel>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

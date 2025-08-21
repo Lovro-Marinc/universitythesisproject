@@ -1,0 +1,33 @@
+﻿@using Telerik.Blazor.Components
+@using Telerik.SvgIcons
+@using static EEWA.WEB.Components.Layout.TelerikNavMenuModel
+@inherits LayoutComponentBase
+@inject TelerikNavMenuModel TNVM
+<TelerikRootComponent>
+
+    <TelerikDrawer Data="@TNVM.NavigablePages"
+                   Expanded="IsExpanded"
+                   MiniMode="true"
+                   Mode="@DrawerMode.Push"
+                   SelectedItemChanged="((DrawerItem item) => SelectedItemChangedHandler(item))">
+        
+        <DrawerContent>
+            @Body
+        </DrawerContent>
+    </TelerikDrawer>
+
+</TelerikRootComponent>
+
+@code{
+    public bool IsExpanded { get; set; } = false;
+
+    public void SelectedItemChangedHandler(DrawerItem item)
+    {
+        if (item.Text == "Menu")
+        {
+            IsExpanded = !IsExpanded;
+        }
+        
+    }
+   
+}

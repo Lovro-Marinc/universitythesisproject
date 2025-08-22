@@ -1,0 +1,38 @@
+﻿/* Dark theme for Telerik Drawer */
+.dark-drawer .k-drawer {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-right: 1px solid #2d2d2d;
+}
+
+.dark-drawer .k-drawer-item {
+    color: #e0e0e0;
+}
+
+    .dark-drawer .k-drawer-item:hover {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+
+    .dark-drawer .k-drawer-item.k-selected {
+        background-color: #3f51b5;
+        color: #ffffff;
+    }
+
+.dark-drawer .k-drawer-separator {
+    border-color: #2d2d2d;
+}
+
+/* Mini mode styling */
+.dark-drawer .k-drawer-mini .k-drawer-item {
+    border-right: 3px solid transparent;
+}
+
+    .dark-drawer .k-drawer-mini .k-drawer-item.k-selected {
+        border-right-color: #3f51b5;
+    }
+
+/* Push mode overlay */
+.dark-drawer .k-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}

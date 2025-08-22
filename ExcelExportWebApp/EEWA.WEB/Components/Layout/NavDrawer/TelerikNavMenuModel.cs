@@ -1,6 +1,6 @@
 ﻿using Telerik.SvgIcons;
 
-namespace EEWA.WEB.Components.Layout;
+namespace EEWA.WEB.Components.Layout.NavDrawer;
 
 public class TelerikNavMenuModel
 {

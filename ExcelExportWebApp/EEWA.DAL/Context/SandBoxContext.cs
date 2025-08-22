@@ -17,4 +17,5 @@ public class SandBoxContext : DbContext
     {
 
     }
+    public SandBoxContext() { }
 }

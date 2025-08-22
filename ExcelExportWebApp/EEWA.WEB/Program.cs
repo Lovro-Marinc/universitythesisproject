@@ -1,7 +1,8 @@
 using EEWA.DAL;
 using EEWA.DAL.Context;
 using EEWA.WEB.Components;
-using EEWA.WEB.Components.Layout;
+using EEWA.WEB.Components.Layout.NavDrawer;
+using EEWA.WEB.Components.Pages.Import;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<SandBoxContext>(options =>
     options.UseSqlServer(connectionString));
@@ -24,6 +26,7 @@ catch (Exception ex)
 }
 
 builder.Services.AddSingleton<TelerikNavMenuModel>();
+builder.Services.AddScoped<ImportViewModel>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

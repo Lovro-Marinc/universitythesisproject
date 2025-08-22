@@ -1,0 +1,26 @@
+﻿@page "/import"
+@using EEWA.DAL.Model
+@using Telerik.Blazor.Components
+@inject ImportViewModel IVM
+<h3>Import</h3>
+<TelerikListView Data="@ListViewData" Pageable="true" PageSize="15">
+    <Template>
+        @{
+            ProjectSection dataItem = (ProjectSection)context;
+            <div class="listview-item">
+                <strong>@dataItem.SectionName</strong> has ID: <strong>@dataItem.SectionID</strong>
+            </div>
+        }
+    </Template>
+</TelerikListView>
+
+@code {
+    private IEnumerable<ProjectSection> ListViewData { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ListViewData = IVM.GetProjectSection();
+
+        await base.OnInitializedAsync();
+    }
+}

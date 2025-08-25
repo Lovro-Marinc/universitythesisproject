@@ -8,25 +8,14 @@
 <div>
     <TabStrip ProjectSectionData="ProjectSectionData" ActiveTabId="ActiveTabId" ActiveTabChange="SetTabID"></TabStrip>
 </div>
-@* <TelerikListView Data="@ListViewData" Pageable="true" PageSize="15">
-    <Template>
-        @{
-            ProjectSection dataItem = (ProjectSection)context;
-            <div class="listview-item">
-                <strong>@dataItem.SectionName</strong> has ID: <strong>@dataItem.SectionID</strong>
-            </div>
-        }
-    </Template>
-</TelerikListView>
- *@
+<div>
+
+</div>
 @code {
 
     private string? ActiveTabId { get; set; }
-
-
-
-
     private IEnumerable<ProjectSection>? ProjectSectionData { get; set; }
+
 
     protected override async Task OnInitializedAsync()
     {

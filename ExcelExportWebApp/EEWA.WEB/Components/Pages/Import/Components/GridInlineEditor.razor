@@ -1,0 +1,35 @@
+﻿@using System.Collections.ObjectModel
+@using Telerik.Blazor
+@using Telerik.Blazor.Components
+@using EEWA.DAL.Model
+@using Telerik.DataSource
+@inject ImportViewModel IVM 
+<TelerikGrid Data="@ComponentColleciton"
+             TItem="@Component"
+             EditMode="@GridEditMode.Inline"
+             OnCreate="@IVM.OnGridCreate"
+             OnDelete="@IVM.OnGridDelete"
+             OnUpdate="@IVM.OnGridUpdate">
+    <GridToolBarTemplate>
+        <GridCommandButton Command="Add">Add Item</GridCommandButton>
+    </GridToolBarTemplate>
+    <GridColumns>
+        <GridColumn Field="@nameof(Component.Position)" />
+        <GridColumn Field="@nameof(Component.Quantity)" DisplayFormat="{0:C2}" />
+        <GridColumn Field="@nameof(Component.Unit)" DisplayFormat="{0:N0}" />
+        <GridColumn Field="@nameof(Component.SortOrder)" Width="120px" />
+        <GridCommandColumn Width="180px">
+            <GridCommandButton Command="Edit">Edit</GridCommandButton>
+            <GridCommandButton Command="Save" ShowInEdit="true">Save</GridCommandButton>
+            <GridCommandButton Command="Cancel" ShowInEdit="true">Cancel</GridCommandButton>
+            <GridCommandButton Command="Delete">Delete</GridCommandButton>
+        </GridCommandColumn>
+    </GridColumns>
+</TelerikGrid>
+@code {
+    [Parameter]
+    public string? SectionID { get; set; }
+
+    public ObservableCollection<Component> ComponentColleciton = new ObservableCollection<Component>();
+  
+}

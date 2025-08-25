@@ -23,25 +23,27 @@
 
 
     private List<Tab> Tabs { get; set; } = new List<Tab>();
+    public async Task HandleTabIdChange(string TabID)
+    {
+        ActiveTabId = TabID;
+        await ActiveTabChange.InvokeAsync(TabID); // Pass the tab ID
+    }
+
     protected override async Task OnInitializedAsync()
     {
         FillTabs();
 
         await base.OnInitializedAsync();
     }
-
-    public async Task HandleTabIdChange(string TabID)
-    {
-        ActiveTabId = TabID;
-        await ActiveTabChange.InvokeAsync(TabID); // Pass the tab ID
-    }
     public void FillTabs()
     {
-        foreach(var section in ProjectSectionData)
+        foreach (var section in ProjectSectionData)
         {
             Tabs.Add(new Tab { Id = section.SectionID, Title = section.SectionName });
         }
     }
+   
+  
     public class Tab
     {
         public int Id { get; set; }

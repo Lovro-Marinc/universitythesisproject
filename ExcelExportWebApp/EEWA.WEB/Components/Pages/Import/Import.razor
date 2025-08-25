@@ -1,9 +1,14 @@
 ﻿@page "/import"
 @using EEWA.DAL.Model
+@using EEWA.WEB.Components.Pages.Import.Components
 @using Telerik.Blazor.Components
 @inject ImportViewModel IVM
 <h3>Import</h3>
-<TelerikListView Data="@ListViewData" Pageable="true" PageSize="15">
+<h4>@ActiveTabId</h4>
+<div>
+    <TabStrip ProjectSectionData="ProjectSectionData" ActiveTabId="ActiveTabId" ActiveTabChange="SetTabID"></TabStrip>
+</div>
+@* <TelerikListView Data="@ListViewData" Pageable="true" PageSize="15">
     <Template>
         @{
             ProjectSection dataItem = (ProjectSection)context;
@@ -13,14 +18,25 @@
         }
     </Template>
 </TelerikListView>
-
+ *@
 @code {
-    private IEnumerable<ProjectSection> ListViewData { get; set; }
+
+    private string? ActiveTabId { get; set; }
+
+
+
+
+    private IEnumerable<ProjectSection>? ProjectSectionData { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        ListViewData = IVM.GetProjectSection();
+        ProjectSectionData = IVM.GetProjectSection();
 
         await base.OnInitializedAsync();
+    }
+    protected async Task SetTabID(string tabId)
+    {
+        ActiveTabId = tabId;
+        this.StateHasChanged();
     }
 }

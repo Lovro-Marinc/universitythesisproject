@@ -1,0 +1,52 @@
+﻿@using EEWA.DAL.Model
+@using Telerik.Blazor.Components
+<TelerikTabStrip ActiveTabIdChanged="@HandleTabIdChange">
+    @{
+        foreach (var tab in Tabs)
+        {
+            <TabStripTab @key="@tab.Id" Title="@tab.Title">
+                <HeaderTemplate>
+                    <span>@tab.Title</span>
+                </HeaderTemplate>
+            
+            </TabStripTab>
+        }
+    }
+</TelerikTabStrip>
+@code {
+    [Parameter]
+    public IEnumerable<ProjectSection>? ProjectSectionData { get; set; }
+    [Parameter]
+    public string? ActiveTabId { get; set; }
+    [Parameter]
+    public EventCallback<string> ActiveTabChange { get; set; }
+
+
+    private List<Tab> Tabs { get; set; } = new List<Tab>();
+    protected override async Task OnInitializedAsync()
+    {
+        FillTabs();
+
+        await base.OnInitializedAsync();
+    }
+
+    public async Task HandleTabIdChange(string TabID)
+    {
+        ActiveTabId = TabID;
+        await ActiveTabChange.InvokeAsync(TabID); // Pass the tab ID
+    }
+    public void FillTabs()
+    {
+        foreach(var section in ProjectSectionData)
+        {
+            Tabs.Add(new Tab { Id = section.SectionID, Title = section.SectionName });
+        }
+    }
+    public class Tab
+    {
+        public int Id { get; set; }
+        public string? Title { get; set; }
+        // public bool Visible { get; set; }
+        // public bool Disabled { get; set; }
+    }
+}

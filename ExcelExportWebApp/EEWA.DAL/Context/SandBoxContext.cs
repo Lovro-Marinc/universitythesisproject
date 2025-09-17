@@ -12,7 +12,7 @@ public class SandBoxContext : DbContext
 {
     public DbSet<ProjectSection> Sections { get; set; }
     public DbSet<Component> Components { get; set; }
-
+    public DbSet<Project> Projects { get; set; }
     public SandBoxContext(DbContextOptions<SandBoxContext> options) : base(options)
     {
 

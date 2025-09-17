@@ -41,9 +41,10 @@ public class SqlServerConnectionTests
     {
         SandBoxContext sandBox = _fixture.sandBoxContext;
         int sectionID = 2;
+        int projectID = 1;
         var test = sandBox;
         var projectSections = sandBox.Sections
-                                   .Where(s => s.SectionID == sectionID)
+                                   .Where(s => s.SectionID == sectionID && s.ProjectID == projectID)
                                    .Select(s => s.SectionName)
                                    .FirstOrDefault();
 

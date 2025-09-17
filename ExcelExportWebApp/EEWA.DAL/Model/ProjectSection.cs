@@ -23,4 +23,7 @@ public class ProjectSection
 
 
 
+    [ForeignKey("ProjectID")]
+    public int ProjectID { get; set; }
+
 }

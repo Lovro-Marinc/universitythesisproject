@@ -20,4 +20,8 @@
     <ProjectReference Include="..\EEWA.DAL\EEWA.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\Pages\Home\Components\" />
+  </ItemGroup>
+
 </Project>

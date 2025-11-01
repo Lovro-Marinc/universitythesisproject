@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EEWA.DAL.Model;
-[Table("Projects", Schema = "dbo")]
+[Table("Project", Schema = "dbo")]
 public class Project
 {
     [Key]
-    public int ID { get; set; }
+    public int ProjectID { get; set; }
 
     [StringLength(255)]
     public string? ProjectName { get; set; }

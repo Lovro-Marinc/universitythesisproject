@@ -1,0 +1,29 @@
+﻿@page "/"
+
+@using EEWA.DAL.Model
+@using EEWA.WEB.Components.Pages.Import.Components
+@using Telerik.Blazor.Components
+@inject HomeViewModel HVM
+@inject AppState AppState
+<TelerikRadioGroup Data="@projectsData"
+                   @bind-Value="@SelectedProjectId"
+                   ValueField="@nameof(Project.ProjectID)"
+                   TextField="@nameof(Project.ProjectName)">
+</TelerikRadioGroup>
+
+@code {
+    private IEnumerable<Project>? projectsData { get; set; }
+    private int? SelectedProjectId
+    {
+        get => AppState.SelectedProjectId;
+        set => AppState.SelectedProjectId = value;
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        projectsData = HVM.GetProjects();
+
+        await base.OnInitializedAsync();
+    }
+}

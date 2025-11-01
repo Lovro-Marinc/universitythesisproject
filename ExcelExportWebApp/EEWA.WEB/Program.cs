@@ -1,7 +1,9 @@
 using EEWA.DAL;
 using EEWA.DAL.Context;
+using EEWA.DAL.Model;
 using EEWA.WEB.Components;
 using EEWA.WEB.Components.Layout.NavDrawer;
+using EEWA.WEB.Components.Pages.Home;
 using EEWA.WEB.Components.Pages.Import;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +28,9 @@ catch (Exception ex)
 }
 
 builder.Services.AddSingleton<TelerikNavMenuModel>();
+builder.Services.AddSingleton<AppState>();
 builder.Services.AddScoped<ImportViewModel>();
+builder.Services.AddScoped<HomeViewModel>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

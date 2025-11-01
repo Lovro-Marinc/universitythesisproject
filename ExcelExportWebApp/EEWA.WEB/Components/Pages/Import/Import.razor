@@ -3,8 +3,12 @@
 @using EEWA.WEB.Components.Pages.Import.Components
 @using Telerik.Blazor.Components
 @inject ImportViewModel IVM
+@inject AppState AppState
 <h3>Import</h3>
 <h4>@ActiveTabId</h4>
+<div>
+    Selected Project ID: @AppState.SelectedProjectId
+</div>
 <div>
     <TabStrip ProjectSectionData="ProjectSectionData" ActiveTabId="ActiveTabId" ActiveTabChange="SetTabID"></TabStrip>
 </div>
@@ -19,7 +23,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        ProjectSectionData = IVM.GetProjectSection();
+        ProjectSectionData = IVM.GetProjectSection(@AppState.SelectedProjectId);
 
         await base.OnInitializedAsync();
     }

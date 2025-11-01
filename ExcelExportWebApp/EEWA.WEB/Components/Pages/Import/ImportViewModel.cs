@@ -6,7 +6,7 @@ namespace EEWA.WEB.Components.Pages.Import;
 public class ImportViewModel
 {
     private readonly SandBoxContext _sandBoxContext;
-
+    public List<Project> projects = new List<Project>();
     public List<ProjectSection> projectSections = new List<ProjectSection>();
     public List<Component> components = new List<Component>();
 
@@ -15,18 +15,24 @@ public class ImportViewModel
         _sandBoxContext = sandBoxContext;
         SetCollection();
     }
-    public IEnumerable<ProjectSection> GetProjectSection()
+    public IEnumerable<Project> GetProjects()
     {
-        return projectSections;
+        return projects;
+    }
+    public IEnumerable<ProjectSection> GetProjectSection(int? ProjectID)
+    {
+        return projectSections.Where(x => x.ProjectID == ProjectID);
     }
     public IEnumerable<Component> GetComponents()
     {
         return components;
     }
+
     public void SetCollection()
     {
         components.AddRange(_sandBoxContext.Components);
         projectSections.AddRange(_sandBoxContext.Sections);
+        projects.AddRange(_sandBoxContext.Projects);
         var firstSection = projectSections.Where(s => s.SectionID == 1).FirstOrDefault();
     }
 
